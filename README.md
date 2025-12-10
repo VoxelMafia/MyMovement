@@ -45,7 +45,27 @@ The `physx` component defines the physical properties and collision shape for th
 
 <img width="464" height="1166" alt="Setup" src="https://github.com/user-attachments/assets/7ad2bf77-db4b-4b25-80f5-286785e426fb" />
 
+## 4️⃣ Add Floor (Static Physx Object)
 
+To allow the physics-driven player to interact with the environment and prevent them from falling infinitely, a **static physics object** must be added to act as the floor. This object will define the ground plane for the simulation.
+
+
+1.  **Create a Floor Mesh:** Create a new object in your scene, typically a **Cube** or a **Plane** mesh, and rename it to something descriptive like `Floor`.
+2.  **Scale and Position:**
+    * Set the object's **scale** to cover the area where the player will move (e.g., $X: 100, Y: 1, Z: 100$).
+    * Set the object's **position** so its top surface is at the desired ground level (e.g., if using a cube scaled $Y: 1$, position $Y: -0.5$ will place the surface at $Y=0$).
+3.  **Add `physx` Component:** Add a **`physx`** component to the `Floor` object.
+4.  **Configure `physx` Properties:**
+    * **Shape:** Set the shape to **`box`** to match the mesh.
+    * **Collision & Simulation:**
+        * Ensure **`simulate`** is **checked**.
+        * Crucially, ensure **`static`** is **checked**. This tells the physics engine that the floor will **not** move or be affected by forces (like gravity or the player's movement).
+        * Ensure **`gravity`** is **unchecked** (since static objects are not affected by gravity).
+    * **Groups:** Assign the floor to a relevant collision group, such as **`static`** or **`nav`**.
+
+By setting the floor to **static**, the physics engine can efficiently calculate collisions between the dynamic player and the unmoving ground, providing a stable surface for the player's movement component to operate on.
+
+---
 ## 💻 `movement` Component Properties
 
 This component handles the logic for taking player input and applying forces or translations.
