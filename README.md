@@ -25,7 +25,7 @@ The player object hierarchy must include a parent object that holds the `physx` 
 
 * The parent object should contain the **`PhysicsBody`** component (or your `physx` component).
 * The **`PlayerRig`** (or main camera/VR rig) and other relevant controllers/cameras must be children of this parent.
-* 
+
 <img width="207" height="177" alt="PlayerSetup_Editor" src="https://github.com/user-attachments/assets/63df21b1-9a74-41a5-9b9b-1a2cbdc84f42" />
 
 ### 3. Physics Body Configuration (Component: `physx`)
